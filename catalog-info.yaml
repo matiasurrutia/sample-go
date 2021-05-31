@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: sample-go
+  description: Same go
+  annotations: 
+    github.com/project-slug: matiasurrutia/sample-go
+    backstage.io/source-ref: "https://github.com/matiasurrutia/sample-go"
+    backstage.io/techdocs-ref: url:https://github.com/matiasurrutia/sample-go
+    backstage.io/github-actions-id: https://github.com/matiasurrutia/sample-go
+spec:
+  type: service
+  lifecycle: experimental
+  owner: architecture-team
