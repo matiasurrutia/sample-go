@@ -8,8 +8,6 @@
 
 ### Crear intención P2P
 
-![picture](images/p2p-generar-intencion-flow-v2.png)
-
 
 ### Transferencia Diferida - Crear Intenci&oacute;n
 
