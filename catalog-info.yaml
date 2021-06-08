@@ -33,6 +33,6 @@ metadata:
 spec:
   type: openapi
   lifecycle: experimental
-  owner: tp-qr-aggretator
+  owner: architecture
   definition:
     $text: https://github.com/matiasurrutia/sample-go/blob/master/openapi.yaml
