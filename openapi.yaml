@@ -1,0 +1,2405 @@
+basePath: /
+definitions:
+  AbstractBenefitDetail:
+    properties:
+      affinity_group_code:
+        items:
+          type: string
+        type: array
+      bank_id:
+        type: string
+      establishment_code:
+        type: string
+      masked_card_number:
+        type: string
+      payment_method_id:
+        type: string
+      product_code:
+        type: string
+      recommendation_code:
+        type: string
+    required:
+      - bank_id
+      - establishment_code
+      - masked_card_number
+      - payment_method_id
+      - recommendation_code
+    title: AbstractBenefitDetail
+    type: object
+  AnnulmentRequest:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      establishment_id:
+        type: string
+      hash:
+        type: string
+      installments:
+        format: int32
+        type: integer
+      pos_type:
+        type: string
+      qr_id:
+        type: string
+      security_code:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - establishment_id
+      - hash
+      - qr_id
+      - terminal_number
+      - ticket_number
+      - trace_number
+      - transaction_datetime
+    title: AnnulmentRequest
+    type: object
+  BankData:
+    properties:
+      establishment:
+        type: string
+      id:
+        type: string
+      installments:
+        items:
+          $ref: '#/definitions/Installment'
+        type: array
+    required:
+      - establishment
+      - id
+      - installments
+    title: BankData
+    type: object
+  BankInformation:
+    properties:
+      bank_id:
+        type: string
+      logo:
+        type: string
+      name:
+        type: string
+    required:
+      - bank_id
+      - logo
+      - name
+    title: BankInformation
+    type: object
+  BenefitMethodData:
+    properties:
+      benefits_card:
+        $ref: '#/definitions/BenefitsCard'
+      discount:
+        $ref: '#/definitions/Discount'
+      establishment_id:
+        type: string
+    required:
+      - benefits_card
+      - discount
+      - establishment_id
+    title: BenefitMethodData
+    type: object
+  BenefitsCard:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+    required:
+      - code
+      - description
+    title: BenefitsCard
+    type: object
+  Discount:
+    properties:
+      maximum_discount_amount:
+        $ref: '#/definitions/Number'
+      percentage:
+        $ref: '#/definitions/Number'
+    required:
+      - maximum_discount_amount
+      - percentage
+    title: Discount
+    type: object
+  ErrorStatus:
+    properties:
+      code:
+        format: int32
+        type: integer
+      reason:
+        type: string
+    required:
+      - code
+      - reason
+    title: ErrorStatus
+    type: object
+  EstablishmentInformation:
+    properties:
+      establishment_id:
+        type: string
+      seller_name:
+        type: string
+      terminal_number:
+        type: string
+    required:
+      - establishment_id
+      - seller_name
+      - terminal_number
+    title: EstablishmentInformation
+    type: object
+  Installment:
+    properties:
+      amount_per_installment:
+        $ref: '#/definitions/Number'
+      cft:
+        $ref: '#/definitions/Number'
+      quantity:
+        $ref: '#/definitions/Number'
+      tna:
+        $ref: '#/definitions/Number'
+      total_amount:
+        $ref: '#/definitions/Number'
+    required:
+      - amount_per_installment
+      - cft
+      - quantity
+      - tna
+      - total_amount
+    title: Installment
+    type: object
+  IntentionResponse:
+    properties:
+      amount:
+        $ref: '#/definitions/Number'
+      benefits_methods_data:
+        items:
+          $ref: '#/definitions/BenefitMethodData'
+        type: array
+      branch:
+        type: string
+      checkout:
+        type: string
+      cuit:
+        type: string
+      currency:
+        type: string
+      integrator_id:
+        type: string
+      integrator_intention_id:
+        type: string
+      intention_datetime:
+        format: date-time
+        type: string
+      intention_id:
+        type: string
+      intention_type:
+        type: string
+      payment_methods_data:
+        items:
+          $ref: '#/definitions/PaymentMethodData'
+        type: array
+      status:
+        type: string
+      terminal_number:
+        type: string
+    required:
+      - amount
+      - benefits_methods_data
+      - branch
+      - checkout
+      - cuit
+      - currency
+      - integrator_id
+      - integrator_intention_id
+      - intention_datetime
+      - intention_id
+      - intention_type
+      - payment_methods_data
+      - status
+      - terminal_number
+    title: IntentionResponse
+    type: object
+  LaposOperationResponse:
+    properties:
+      account_id:
+        type: string
+      amount:
+        $ref: '#/definitions/Number'
+      bank_information:
+        $ref: '#/definitions/BankInformation'
+      establishment_id:
+        type: string
+      installments:
+        type: string
+      payment_id:
+        type: string
+      payment_method:
+        $ref: '#/definitions/PaymentMethod'
+      rejection_reason:
+        $ref: '#/definitions/RejectionReason'
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+      transaction_id:
+        type: string
+    required:
+      - account_id
+      - amount
+      - bank_information
+      - establishment_id
+      - installments
+      - payment_id
+      - payment_method
+      - status
+      - terminal_number
+      - ticket_number
+      - trace_number
+      - transaction_id
+    title: LaposOperationResponse
+    type: object
+  LaposPaymentRequest:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      benefit_card_code:
+        type: string
+      benefit_card_description:
+        type: string
+      benefit_number:
+        type: string
+      discounted_amount:
+        format: double
+        type: number
+      establishment_information:
+        $ref: '#/definitions/EstablishmentInformation'
+      installments:
+        format: int32
+        type: integer
+      original_amount:
+        format: double
+        type: number
+      payment_method_key:
+        type: string
+      pos_type:
+        type: string
+      qr_id:
+        type: string
+      security_code:
+        type: string
+      shopping_session_id:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - establishment_information
+      - payment_method_key
+      - qr_id
+      - ticket_number
+      - trace_number
+      - transaction_datetime
+    title: LaposPaymentRequest
+    type: object
+  LaposPaymentResponse:
+    properties:
+      account_id:
+        type: string
+      amount:
+        $ref: '#/definitions/Number'
+      bank_information:
+        $ref: '#/definitions/BankInformation'
+      establishment_id:
+        type: string
+      installments:
+        type: string
+      payment_id:
+        type: string
+      payment_method:
+        $ref: '#/definitions/PaymentMethod'
+      qr_id:
+        type: string
+      rejection_reason:
+        $ref: '#/definitions/RejectionReason'
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - account_id
+      - amount
+      - bank_information
+      - establishment_id
+      - installments
+      - payment_id
+      - payment_method
+      - qr_id
+      - status
+      - terminal_number
+      - ticket_number
+      - trace_number
+      - transaction_datetime
+    title: LaposPaymentResponse
+    type: object
+  LaposReimbursementRequest:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      establishment_information:
+        $ref: '#/definitions/EstablishmentInformation'
+      hash:
+        type: string
+      installments:
+        format: int32
+        type: integer
+      pos_type:
+        type: string
+      qr_id:
+        type: string
+      security_code:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - establishment_information
+      - hash
+      - qr_id
+      - ticket_number
+      - trace_number
+      - transaction_datetime
+    title: LaposReimbursementRequest
+    type: object
+  LaposReimbursementResponse:
+    properties:
+      payment_id:
+        type: string
+      qr_id:
+        type: string
+      rejection_reason:
+        $ref: '#/definitions/RejectionReason'
+      status_transaction:
+        type: string
+      transaction_date:
+        format: date-time
+        type: string
+    required:
+      - payment_id
+      - qr_id
+      - status_transaction
+      - transaction_date
+    title: LaposReimbursementResponse
+    type: object
+  LaposTransactionResponse:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      benefit_card_code:
+        type: string
+      benefit_card_description:
+        type: string
+      currency:
+        type: string
+      discounted_amount:
+        format: double
+        type: number
+      error:
+        $ref: '#/definitions/ErrorStatus'
+      id:
+        format: int64
+        type: integer
+      installments:
+        format: int32
+        type: integer
+      operation_status:
+        type: string
+      operation_type:
+        type: string
+      original_amount:
+        format: double
+        type: number
+      payment_id:
+        format: int64
+        type: integer
+      payment_method:
+        $ref: '#/definitions/PaymentMethodResponse'
+      qr_id:
+        type: string
+      seller_name:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - account_id
+      - amount
+      - currency
+      - id
+      - installments
+      - operation_status
+      - operation_type
+      - qr_id
+      - transaction_datetime
+    title: LaposTransactionResponse
+    type: object
+  Number:
+    title: Number
+    type: object
+  OperationError:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+    required:
+      - code
+    title: OperationError
+    type: object
+  OperationProviderResponse:
+    properties:
+      next_operation_id:
+        format: int64
+        type: integer
+    required:
+      - next_operation_id
+    title: OperationProviderResponse
+    type: object
+  OperationResponse:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      benefit_id:
+        type: string
+      currency:
+        type: string
+      decidir_transaction_id:
+        format: int64
+        type: integer
+      discounted_amount:
+        format: double
+        type: number
+      error:
+        $ref: '#/definitions/OperationError'
+      establishment_id:
+        type: string
+      id:
+        format: int64
+        type: integer
+      installments:
+        format: int32
+        type: integer
+      intention_id:
+        type: string
+      operation_type:
+        type: string
+      original_amount:
+        format: double
+        type: number
+      original_transaction_id:
+        format: int64
+        type: integer
+      payment_method:
+        $ref: '#/definitions/PaymentMethodResponse'
+      pos_type:
+        type: string
+      qr_id:
+        type: string
+      refund_status:
+        format: int32
+        type: integer
+      reverse_status:
+        format: int32
+        type: integer
+      seller_name:
+        type: string
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+      voucher_detail:
+        $ref: '#/definitions/AbstractBenefitDetail'
+    required:
+      - account_id
+      - amount
+      - currency
+      - decidir_transaction_id
+      - establishment_id
+      - id
+      - installments
+      - operation_type
+      - payment_method
+      - pos_type
+      - refund_status
+      - reverse_status
+      - status
+      - terminal_number
+      - ticket_number
+      - trace_number
+    title: OperationResponse
+    type: object
+  PaymentErrorResponse:
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+    required:
+      - code
+      - message
+    title: PaymentErrorResponse
+    type: object
+  PaymentMethod:
+    properties:
+      cvv_required:
+        type: boolean
+      logo:
+        type: string
+      masked_card_number:
+        type: string
+      payment_method_id:
+        type: string
+      scheme:
+        type: string
+      type:
+        type: string
+      valid_thru:
+        type: string
+    required:
+      - cvv_required
+      - logo
+      - masked_card_number
+      - payment_method_id
+      - scheme
+      - type
+      - valid_thru
+    title: PaymentMethod
+    type: object
+  PaymentMethodData:
+    properties:
+      bank_data:
+        items:
+          $ref: '#/definitions/BankData'
+        type: array
+      bank_installments:
+        additionalProperties:
+          items:
+            $ref: '#/definitions/Installment'
+          type: array
+        type: object
+      id:
+        format: int64
+        type: integer
+      payment_method_id:
+        format: int64
+        type: integer
+    required:
+      - bank_data
+      - bank_installments
+      - id
+      - payment_method_id
+    title: PaymentMethodData
+    type: object
+  PaymentMethodResponse:
+    properties:
+      alias:
+        type: string
+      bank:
+        $ref: '#/definitions/PaymentMethodResponseBank'
+      brand:
+        $ref: '#/definitions/PaymentMethodResponseBrand'
+      id:
+        format: int64
+        type: integer
+      masked_card_number:
+        type: string
+      payment_method_id:
+        format: int64
+        type: integer
+      requires_cvv:
+        type: boolean
+      type:
+        type: string
+      valid_thru:
+        type: string
+    required:
+      - alias
+      - bank
+      - brand
+      - id
+      - masked_card_number
+      - payment_method_id
+      - requires_cvv
+      - type
+      - valid_thru
+    title: PaymentMethodResponse
+    type: object
+  PaymentMethodResponseBank:
+    properties:
+      id:
+        format: int64
+        type: integer
+      logo:
+        type: string
+      name:
+        type: string
+    required:
+      - id
+      - logo
+      - name
+    title: PaymentMethodResponseBank
+    type: object
+  PaymentMethodResponseBrand:
+    properties:
+      id:
+        format: int64
+        type: integer
+      logo:
+        type: string
+      name:
+        type: string
+    required:
+      - id
+      - logo
+      - name
+    title: PaymentMethodResponseBrand
+    type: object
+  PaymentResponse:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      benefit_id:
+        type: string
+      currency:
+        type: string
+      decidir_transaction_id:
+        format: int64
+        type: integer
+      error:
+        $ref: '#/definitions/PaymentErrorResponse'
+      establishment_id:
+        type: string
+      id:
+        format: int64
+        type: integer
+      installments:
+        format: int32
+        type: integer
+      intention_id:
+        type: string
+      payment_method:
+        $ref: '#/definitions/PaymentMethodResponse'
+      qr_id:
+        type: string
+      refund_status:
+        format: int32
+        type: integer
+      reverse_status:
+        format: int32
+        type: integer
+      seller_name:
+        type: string
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - account_id
+      - amount
+      - currency
+      - decidir_transaction_id
+      - establishment_id
+      - id
+      - installments
+      - payment_method
+      - refund_status
+      - reverse_status
+      - status
+      - terminal_number
+      - ticket_number
+      - trace_number
+    title: PaymentResponse
+    type: object
+  ProprietaryOperationResponse:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      benefit_id:
+        type: string
+      cft:
+        format: double
+        type: number
+      currency:
+        type: string
+      decidir_transaction_id:
+        format: int64
+        type: integer
+      discounted_amount:
+        format: double
+        type: number
+      error:
+        $ref: '#/definitions/OperationError'
+      establishment_id:
+        type: string
+      id:
+        format: int64
+        type: integer
+      installment_amount:
+        format: double
+        type: number
+      installments:
+        format: int32
+        type: integer
+      integrator_id:
+        type: string
+      intention_id:
+        type: string
+      operation_sub_type:
+        type: string
+      operation_type:
+        type: string
+      original_amount:
+        format: double
+        type: number
+      original_transaction_id:
+        format: int64
+        type: integer
+      payment_method:
+        $ref: '#/definitions/PaymentMethodResponse'
+      pos_type:
+        type: string
+      proprietary_voucher_detail:
+        $ref: '#/definitions/AbstractBenefitDetail'
+      qr_id:
+        type: string
+      refund_status:
+        format: int32
+        type: integer
+      reverse_status:
+        format: int32
+        type: integer
+      seller_name:
+        type: string
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      tna:
+        format: double
+        type: number
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - account_id
+      - amount
+      - cft
+      - currency
+      - decidir_transaction_id
+      - establishment_id
+      - id
+      - installment_amount
+      - installments
+      - integrator_id
+      - operation_type
+      - original_amount
+      - payment_method
+      - pos_type
+      - refund_status
+      - reverse_status
+      - status
+      - terminal_number
+      - ticket_number
+      - tna
+      - trace_number
+    title: ProprietaryOperationResponse
+    type: object
+  ProprietaryOperationResponseV3:
+    properties:
+      account_id:
+        type: string
+      amount:
+        $ref: '#/definitions/Number'
+      bank_information:
+        $ref: '#/definitions/BankInformation'
+      establishment_id:
+        type: string
+      installments:
+        type: string
+      intention_id:
+        type: string
+      payment_id:
+        type: string
+      payment_method:
+        $ref: '#/definitions/PaymentMethod'
+      rejection_reason:
+        $ref: '#/definitions/RejectionReason'
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+      transaction_id:
+        type: string
+    required:
+      - account_id
+      - amount
+      - bank_information
+      - establishment_id
+      - installments
+      - intention_id
+      - payment_id
+      - payment_method
+      - status
+      - terminal_number
+      - ticket_number
+      - trace_number
+      - transaction_id
+    title: ProprietaryOperationResponseV3
+    type: object
+  ProprietaryPaymentRequest:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      benefit_number:
+        type: string
+      installments:
+        format: int32
+        type: integer
+      intention_id:
+        type: string
+      payment_method_key:
+        type: string
+      pos_type:
+        type: string
+      security_code:
+        type: string
+      seller_name:
+        type: string
+      shopping_session_id:
+        type: string
+    required:
+      - intention_id
+      - payment_method_key
+    title: ProprietaryPaymentRequest
+    type: object
+  ProprietaryPaymentResponse:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      annulment_status:
+        format: int32
+        type: integer
+      benefit_id:
+        type: string
+      cft:
+        format: double
+        type: number
+      currency:
+        type: string
+      decidir_transaction_id:
+        format: int64
+        type: integer
+      discounted_amount:
+        format: double
+        type: number
+      error:
+        $ref: '#/definitions/PaymentErrorResponse'
+      establishment_id:
+        type: string
+      id:
+        format: int64
+        type: integer
+      installment_amount:
+        format: double
+        type: number
+      installments:
+        format: int32
+        type: integer
+      integrator_id:
+        type: string
+      intention_id:
+        type: string
+      operation_sub_type:
+        type: string
+      original_amount:
+        format: double
+        type: number
+      payment_method:
+        $ref: '#/definitions/PaymentMethodResponse'
+      pos_type:
+        type: string
+      qr_id:
+        type: string
+      refund_status:
+        format: int32
+        type: integer
+      seller_name:
+        type: string
+      status:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      tna:
+        format: double
+        type: number
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - account_id
+      - amount
+      - annulment_status
+      - cft
+      - currency
+      - decidir_transaction_id
+      - establishment_id
+      - id
+      - installment_amount
+      - installments
+      - integrator_id
+      - original_amount
+      - payment_method
+      - pos_type
+      - refund_status
+      - status
+      - terminal_number
+      - ticket_number
+      - tna
+      - trace_number
+    title: ProprietaryPaymentResponse
+    type: object
+  ProprietaryReimbursementRequest:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      security_code:
+        type: string
+    title: ProprietaryReimbursementRequest
+    type: object
+  ProprietaryReimbursementResponse:
+    properties:
+      intention_id:
+        type: string
+      payment_id:
+        type: string
+      rejection_reason:
+        $ref: '#/definitions/RejectionReason'
+      status_transaction:
+        type: string
+      transaction_date:
+        format: date-time
+        type: string
+    required:
+      - intention_id
+      - payment_id
+      - status_transaction
+    title: ProprietaryReimbursementResponse
+    type: object
+  ProprietaryTransactionErrorResponse:
+    properties:
+      code:
+        format: int32
+        type: integer
+      reason:
+        type: string
+    required:
+      - code
+      - reason
+    title: ProprietaryTransactionErrorResponse
+    type: object
+  ProprietaryTransactionResponse:
+    properties:
+      amount:
+        format: double
+        type: number
+      benefit_id:
+        type: string
+      branch:
+        type: string
+      cft:
+        format: double
+        type: number
+      checkout:
+        type: string
+      cuit:
+        type: string
+      currency:
+        type: string
+      error:
+        $ref: '#/definitions/ProprietaryTransactionErrorResponse'
+      id:
+        type: string
+      installment_amount:
+        format: double
+        type: number
+      installments:
+        format: int32
+        type: integer
+      intention_id:
+        type: string
+      operation_status:
+        type: string
+      operation_type:
+        type: string
+      original_amount:
+        format: double
+        type: number
+      payment_method:
+        $ref: '#/definitions/PaymentMethodResponse'
+      tna:
+        format: double
+        type: number
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - amount
+      - branch
+      - cft
+      - checkout
+      - cuit
+      - currency
+      - id
+      - installment_amount
+      - installments
+      - intention_id
+      - operation_status
+      - operation_type
+      - original_amount
+      - payment_method
+      - tna
+    title: ProprietaryTransactionResponse
+    type: object
+  QrCodeResponse:
+    properties:
+      amount:
+        format: double
+        type: number
+      operation_type:
+        enum:
+          - LAPOS_PAYMENT
+          - LAPOS_ANNULMENT
+          - LAPOS_REFUND
+          - PROPRIETARY_PAYMENT
+          - PROPRIETARY_REFUND
+          - PROPRIETARY_ANNULMENT
+          - INVALID
+        type: string
+      qr_id:
+        type: string
+      status:
+        enum:
+          - UNAVAILABLE
+          - AVAILABLE
+        type: string
+      terminal_number:
+        type: string
+      transaction_date_time:
+        format: date-time
+        type: string
+    required:
+      - amount
+      - operation_type
+      - qr_id
+      - status
+      - terminal_number
+      - transaction_date_time
+    title: QrCodeResponse
+    type: object
+  RefundRequest:
+    properties:
+      account_id:
+        format: int64
+        type: integer
+      amount:
+        format: double
+        type: number
+      establishment_id:
+        type: string
+      hash:
+        type: string
+      installments:
+        format: int32
+        type: integer
+      pos_type:
+        type: string
+      qr_id:
+        type: string
+      security_code:
+        type: string
+      terminal_number:
+        type: string
+      ticket_number:
+        type: string
+      trace_number:
+        type: string
+      transaction_datetime:
+        format: date-time
+        type: string
+    required:
+      - establishment_id
+      - hash
+      - qr_id
+      - terminal_number
+      - ticket_number
+      - trace_number
+      - transaction_datetime
+    title: RefundRequest
+    type: object
+  RejectionReason:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+    required:
+      - code
+      - description
+    title: RejectionReason
+    type: object
+  Response:
+    title: Response
+    type: object
+host: 'ms-adquirente.marathon.l4lb.thisdcos.directory:8080'
+info:
+  title: ms-adquirente
+  version: 1.65.2
+paths:
+  '/private/v1/lapos/payments/{id}':
+    get:
+      deprecated: false
+      operationId: unsecuredGetLaposPaymentUsingGET
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: unsecuredGetLaposPayment
+      tags:
+        - payment-controller
+  '/private/v1/operation/type/{type}':
+    get:
+      deprecated: false
+      operationId: getNexOperationIdUsingGET
+      parameters:
+        - description: type
+          in: path
+          name: type
+          required: true
+          type: string
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OperationProviderResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: getNexOperationId
+      tags:
+        - operation-provider-controller
+  /private/v1/proprietary/intentions:
+    get:
+      deprecated: false
+      operationId: getPaymentIntentionUsingGET
+      parameters:
+        - description: branch
+          in: query
+          name: branch
+          required: true
+          type: string
+        - description: checkout
+          in: query
+          name: checkout
+          required: true
+          type: string
+        - description: cuit
+          in: query
+          name: cuit
+          required: true
+          type: string
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IntentionResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: getPaymentIntention
+      tags:
+        - payment-intention-controller
+  /private/v1/proprietary/payments:
+    get:
+      deprecated: false
+      operationId: securedGetProprietaryPaymentUsingGET
+      parameters:
+        - description: decidir_id
+          in: query
+          name: decidir_id
+          required: true
+          type: string
+        - description: integrator_id
+          in: query
+          name: integrator_id
+          required: true
+          type: string
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryPaymentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetProprietaryPayment
+      tags:
+        - payment-controller
+  '/private/v1/proprietary/payments/{id}':
+    get:
+      deprecated: false
+      operationId: unsecuredGetProprietaryPaymentUsingGET
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryPaymentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: unsecuredGetProprietaryPayment
+      tags:
+        - payment-controller
+  /private/v1/qr-codes:
+    get:
+      deprecated: false
+      operationId: validatePaymentUsingGET
+      parameters:
+        - description: amount
+          format: double
+          in: query
+          name: amount
+          required: true
+          type: number
+        - description: qr_id
+          in: query
+          name: qr_id
+          required: true
+          type: string
+        - description: terminal_number
+          in: query
+          name: terminal_number
+          required: true
+          type: string
+        - description: transaction_datetime
+          format: date-time
+          in: query
+          name: transaction_datetime
+          required: true
+          type: string
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/QrCodeResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: validatePayment
+      tags:
+        - qr-code-controller
+  '/private/v2/proprietary/intentions/{id}':
+    get:
+      deprecated: false
+      operationId: getPaymentIntentionByIdUsingGET
+      parameters:
+        - description: id
+          in: path
+          name: id
+          required: true
+          type: string
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/IntentionResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: getPaymentIntentionById
+      tags:
+        - payment-intention-controller
+  '/public/oauth/v1/lapos/operation/{id}':
+    get:
+      deprecated: false
+      operationId: securedGetLaposOperationUsingGET
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetLaposOperation
+      tags:
+        - operations-controller
+  /public/oauth/v1/lapos/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposPaymentUsingPOST
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/LaposPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposPayment
+      tags:
+        - operations-controller
+  '/public/oauth/v1/lapos/payments/{id}':
+    get:
+      deprecated: false
+      operationId: securedGetLaposPaymentUsingGET
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetLaposPayment
+      tags:
+        - payment-controller
+  '/public/oauth/v1/lapos/payments/{id}/annulment':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposAnnulmentUsingPOST
+      parameters:
+        - description: annulment
+          in: body
+          name: annulment
+          required: true
+          schema:
+            $ref: '#/definitions/AnnulmentRequest'
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposAnnulment
+      tags:
+        - operations-controller
+  '/public/oauth/v1/lapos/payments/{id}/refund':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposRefundUsingPOST
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: refund
+          in: body
+          name: refund
+          required: true
+          schema:
+            $ref: '#/definitions/RefundRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposRefund
+      tags:
+        - operations-controller
+  /public/oauth/v1/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makePaymentUsingPOST
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/LaposPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makePayment
+      tags:
+        - operations-controller
+  '/public/oauth/v1/payments/{id}':
+    get:
+      deprecated: false
+      operationId: getPaymentUsingGET
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/PaymentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: getPayment
+      tags:
+        - payment-controller
+  '/public/oauth/v1/payments/{id}/annulment':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeAnnulmentUsingPOST
+      parameters:
+        - description: annulment
+          in: body
+          name: annulment
+          required: true
+          schema:
+            $ref: '#/definitions/AnnulmentRequest'
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeAnnulment
+      tags:
+        - operations-controller
+  '/public/oauth/v1/payments/{id}/refund':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeRefundUsingPOST
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: refund
+          in: body
+          name: refund
+          required: true
+          schema:
+            $ref: '#/definitions/RefundRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Response'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeRefund
+      tags:
+        - operations-controller
+  '/public/oauth/v1/proprietary/operation/{id}':
+    get:
+      deprecated: false
+      operationId: securedGetProprietaryOperationUsingGET
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetProprietaryOperation
+      tags:
+        - operations-controller
+  /public/oauth/v1/proprietary/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryPaymentUsingPOST
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryPayment
+      tags:
+        - operations-controller
+  '/public/oauth/v1/proprietary/payments/{id}':
+    get:
+      deprecated: false
+      operationId: securedGetProprietaryPaymentUsingGET_1
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryPaymentResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetProprietaryPayment
+      tags:
+        - payment-controller
+  '/public/oauth/v1/proprietary/payments/{id}/reimbursement':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryReimbursementUsingPOST
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: reimbursement
+          in: body
+          name: reimbursement
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryReimbursementRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryReimbursement
+      tags:
+        - operations-controller
+  '/public/oauth/v2/proprietary/operations/{id}':
+    get:
+      deprecated: false
+      operationId: securedGetProprietaryOperationUsingGET_1
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetProprietaryOperation
+      tags:
+        - operations-controller-v-2
+  /public/oauth/v2/proprietary/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryPaymentUsingPOST_1
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryPayment
+      tags:
+        - operations-controller-v-2
+  '/public/oauth/v2/proprietary/payments/{id}/reimbursements':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryReimbursementUsingPOST_1
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: reimbursement
+          in: body
+          name: reimbursement
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryReimbursementRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryReimbursement
+      tags:
+        - operations-controller-v-2
+  '/public/v2/lapos/operations/{id}':
+    get:
+      deprecated: false
+      operationId: securedGetLaposOperationUsingGET_1
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/OperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: securedGetLaposOperation
+      tags:
+        - operations-controller-v-2
+  /public/v2/lapos/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposPaymentV2UsingPOST
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/LaposPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposPaymentV2
+      tags:
+        - operations-controller-v-2
+  '/public/v2/lapos/payments/{id}/annulments':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposAnnulmentUsingPOST_1
+      parameters:
+        - description: annulment
+          in: body
+          name: annulment
+          required: true
+          schema:
+            $ref: '#/definitions/AnnulmentRequest'
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposAnnulment
+      tags:
+        - operations-controller-v-2
+  '/public/v2/lapos/payments/{id}/refunds':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposRefundUsingPOST_1
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: refund
+          in: body
+          name: refund
+          required: true
+          schema:
+            $ref: '#/definitions/RefundRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposRefund
+      tags:
+        - operations-controller-v-2
+  /public/v3/lapos/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposPaymentUsingPOST_1
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/LaposPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposPayment
+      tags:
+        - operations-controller-v-3
+  '/public/v3/lapos/payments/{id}/annulments':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposAnnulmentUsingPOST_2
+      parameters:
+        - description: annulment
+          in: body
+          name: annulment
+          required: true
+          schema:
+            $ref: '#/definitions/LaposReimbursementRequest'
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposAnnulment
+      tags:
+        - operations-controller-v-3
+  '/public/v3/lapos/payments/{id}/refunds':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeLaposRefundUsingPOST_2
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: refund
+          in: body
+          name: refund
+          required: true
+          schema:
+            $ref: '#/definitions/LaposReimbursementRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeLaposRefund
+      tags:
+        - operations-controller-v-3
+  '/public/v3/lapos/{accountId}/operations/{id}':
+    get:
+      deprecated: false
+      operationId: publicGetLaposOperationUsingGET
+      parameters:
+        - description: accountId
+          in: path
+          name: accountId
+          required: true
+          type: string
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/LaposOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: publicGetLaposOperation
+      tags:
+        - operations-controller-v-3
+  /public/v3/proprietary/payments:
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryPaymentUsingPOST_2
+      parameters:
+        - description: payment
+          in: body
+          name: payment
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryPaymentRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryPayment
+      tags:
+        - operations-controller-v-3
+  '/public/v3/proprietary/payments/{id}/reimbursements':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryReimbursementUsingPOST_2
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: reimbursement
+          in: body
+          name: reimbursement
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryReimbursementRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryReimbursement
+      tags:
+        - operations-controller-v-3
+  '/public/v3/proprietary/{accountId}/operations/{id}':
+    get:
+      deprecated: false
+      operationId: publicGetProprietaryOperationUsingGET
+      parameters:
+        - description: accountId
+          in: path
+          name: accountId
+          required: true
+          type: string
+        - description: id
+          in: path
+          name: id
+          required: true
+          type: string
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryOperationResponseV3'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: publicGetProprietaryOperation
+      tags:
+        - operations-controller-v-3
+  '/public/v4/proprietary/payments/{id}/reimbursements':
+    post:
+      consumes:
+        - application/json
+      deprecated: false
+      operationId: makeProprietaryReimbursementUsingPOST_3
+      parameters:
+        - description: id
+          format: int64
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: reimbursement
+          in: body
+          name: reimbursement
+          required: true
+          schema:
+            $ref: '#/definitions/ProprietaryReimbursementRequest'
+      produces:
+        - '*/*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ProprietaryTransactionResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      summary: makeProprietaryReimbursement
+      tags:
+        - operations-controller-v-4
+swagger: '2.0'
+tags:
+  - description: Operation Provider Controller
+    name: operation-provider-controller
+  - description: Operations Controller
+    name: operations-controller
+  - description: Operations Controller V 2
+    name: operations-controller-v-2
+  - description: Operations Controller V 3
+    name: operations-controller-v-3
+  - description: Operations Controller V 4
+    name: operations-controller-v-4
+  - description: Payment Controller
+    name: payment-controller
+  - description: Payment Intention Controller
+    name: payment-intention-controller
+  - description: Qr Code Controller
+    name: qr-code-controller
